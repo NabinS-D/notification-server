@@ -28,13 +28,12 @@ router.post("/send-chat-notification", async (req, res) => {
         app_id: process.env.ONESIGNAL_APP_ID,
         contents: { en: message },
         headings: { en: username },
-        included_segments: ["Subscribed Users"],
         filters: [
           {
             field: "tag",
             key: "userId",
             relation: "!=",
-            value: senderUserId || "",
+            value: senderUserId,
           },
         ],
         buttons: [{ id: "open_chat", text: "Open Chat" }],
