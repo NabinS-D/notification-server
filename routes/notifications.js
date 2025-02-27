@@ -9,10 +9,10 @@ router.post("/send-chat-notification", async (req, res) => {
     const { message, username, senderUserId } = req.body;
 
     // Validate required fields
-    if (!message || !username) {
+    if (!message || !username || !senderUserId) {
       return res
         .status(400)
-        .json({ error: "Message and username are required" });
+        .json({ error: "Message, username and senderUserId are required" });
     }
 
     // Prepare the request options for OneSignal API
